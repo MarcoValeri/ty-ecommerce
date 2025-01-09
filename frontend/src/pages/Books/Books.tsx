@@ -52,6 +52,7 @@ const Books = () => {
                         return (
                             <BookCard
                                 key={book.id}
+                                id={book.id}
                                 title={book.title}
                                 author={book.author}
                             />

@@ -49,7 +49,7 @@ router.post("/books", (req: Request, res: Response) => {
 })
 
 // UPDATE a book
-router.put("books/:id", (req: Request, res: Response) => {
+router.put("/books/:id", (req: Request, res: Response) => {
     const bookId = parseInt(req.params.id);
     const bookIndex = books.findIndex(b => b.id === bookId);
 
@@ -62,7 +62,7 @@ router.put("books/:id", (req: Request, res: Response) => {
 })
 
 // DELETE a book
-router.delete("books/:id", (req: Request, res: Response) => {
+router.delete("/books/:id", (req: Request, res: Response) => {
     const bookId = parseInt(req.params.id);
     const bookIndex = books.findIndex(b => b.id === bookId);
 
