@@ -1,10 +1,15 @@
+import Nav from "../../components/Nav/Nav";
+
 import "./Home.scss";
 
 const Home = () => {
     return (
-        <div className="home">
-            <h2>Home</h2>
-        </div>
+        <>
+            <Nav />
+            <div className="home">
+                <h2>Home</h2>
+            </div>
+        </>
     )
 }
 

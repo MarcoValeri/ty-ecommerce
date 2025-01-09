@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
+import BookCard from "../../components/BookCard/BookCard";
 
 import "./Books.scss";
+import Nav from "../../components/Nav/Nav";
+
+interface Book {
+    id: number;
+    title: string;
+    author: string;
+}
 
 const Books = () => {
 
-    const [books, setBooks] = useState(null);
+    const [books, setBooks] = useState<Book[] | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         fetch('http://localhost:3000/api/books')
@@ -35,10 +43,23 @@ const Books = () => {
     }
 
     return (
-        <div className="books">
-            <h2>Books</h2>
-            <pre>{JSON.stringify(books, null, 2)}</pre>
-        </div>
+        <>
+            <Nav />
+            <div className="books">
+                <h2>Books</h2>
+                <div className="books__container-books">
+                    {books && books.map((book: Book) => {
+                        return (
+                            <BookCard
+                                key={book.id}
+                                title={book.title}
+                                author={book.author}
+                            />
+                        )
+                    })}
+                </div>
+            </div>
+        </>
     )
 }
 
